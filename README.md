@@ -1,3 +1,3 @@
-# Dogs API Breed Challenge :dog:
+# Github API exercise
 
-This repo contains starter files for the *Dogs API Breed* challenge.
+This repo contains starter files for the *Github API* exercise.
