@@ -4,32 +4,34 @@
 
         'use strict';
 
-        function getDogImage(userBreedEntry) {
+        function getuserRepo(ghUsername) {
             
-            //handle use cases if user input capitalizes any letter in input
-            let breedParameter = userBreedEntry.toLowerCase();
-            
-            let newURL = `https://dog.ceo/api/breed/${breedParameter}/images/random`;
-            //console.log(test);
-
-            fetch(newURL)
+            let URL = `https://api.github.com/users/${ghUsername}/repos`;
+            fetch(URL)
                 .then(response => response.json())
                 .then(data => 
                     displayResults(data))
         }
 
         function displayResults(data) {
-            //console.log(data);
-            let dogData = data.message;
-            console.log(dogData);
+            
+            $('#results-list').empty();
+            for (let i = 0; i < data.length; i++) {
+                //gives me name of repo 
+                //console.log(data[i].name);
 
-            if(dogData === 'Breed not found (master breed does not exist)') {
-                alert('Breed not found (master breed does not exist). Please try again!');
-                return;
-            } else {
-                $('.results-img').replaceWith(`<img src="${dogData}" class="results-img">`);
+                //gives me URL of repo 
+                //console.log(data[i].html_url);
+                //$('#results-list').empty();
+
+                $('#results-list').append(
+                    `<li>
+                    <p>Repo: ${data[i].name}</p>
+                    <p>Repo URL: <a href="${data[i].html_url}">${data[i].html_url}</a></p>
+                    </li>`
+                )
             }
-                    
+
             //display the results section
             $('.results').removeClass('hidden');
         }
@@ -38,15 +40,15 @@
             $('form').submit(event => {
                 event.preventDefault();
 
-               let userBreedEntry = $('#breed-list-entry').val();
+               let usernameEntry = $('#username-entry').val();
 
-                if(userBreedEntry === '') {
+                if(usernameEntry === '') {
                     alert('Input can not be left blank');
                     return;
                 }
 
-                getDogImage(userBreedEntry);
-                $('#dog-form').find('input:text').val(''); 
+                getuserRepo(usernameEntry);
+                $('#candidate-form').find('input:text').val(''); 
 
             });
         }

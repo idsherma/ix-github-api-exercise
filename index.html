@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Dog Breed Generator</title>
+  <title>Github Candidate Review</title>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
@@ -11,17 +11,18 @@
 <body>
 
   <div class="container">
-    <h1>🐶 Dog Breed Generator</h1>
+    <h1>Github Candidate Review</h1>
 
-    <form id="dog-form">
-      <label for="dogs">Get dog images by breed</label>
-      <input type="text" name="shopping-list-entry" id="breed-list-entry" placeholder="e.g., Beagle">
-      <button type="submit" id="submit">Fetch this breed!</button>
+    <form id="candidate-form">
+      <label for="candidates">Get candidates information</label>
+      <input type="text" name="username-entry" id="username-entry" placeholder="e.g., username123">
+      <button type="submit" id="submit">Submit</button>
     </form>
  
     <section class="results hidden">
-      <h2>Look at this dog!</h2>
-      <img class="results-img" alt="placeholder">
+      <h2>Search results</h2>
+      <ul id="results-list">
+      </ul>
     </section>
   </div>
 
